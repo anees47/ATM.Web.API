@@ -6,4 +6,4 @@ public record Account
     public string AccountNumber { get; init; } = "";
     public decimal Balance { get; init; } = 0;
     public ICollection<Transaction>? Transactions { get; init; } = [];
-} 
+}
