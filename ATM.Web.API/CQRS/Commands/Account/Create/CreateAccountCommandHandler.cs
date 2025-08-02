@@ -1,9 +1,8 @@
 using ATM.Web.API.Repositories;
 using ATM.Web.API.Domain;
 using FluentValidation;
-using ATM.Web.API.CQRS.Commands.Account.Create;
 
-namespace ATM.Web.API.Commands.Account;
+namespace ATM.Web.API.CQRS.Commands.Account.Create;
 
 public class CreateAccountCommandHandler(
     IAccountWriteRepository writeRepository,
@@ -19,9 +18,9 @@ public class CreateAccountCommandHandler(
 
         var accountNumber = $"ACC{Random.Shared.Next(100000, 999999)}";
 
-        var account = new ATM.Web.API.Domain.Account
+        var account = new Domain.Account
         {
-            AccountNumber = accountNumber,
+            Id = accountNumber,
             Balance = command.InitialBalance ?? 0
         };
 

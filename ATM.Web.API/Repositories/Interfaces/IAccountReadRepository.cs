@@ -4,7 +4,6 @@ namespace ATM.Web.API.Repositories;
 
 public interface IAccountReadRepository
 {
-    Task<Account?> GetByIdAsync(Guid id);
-    Task<Account?> GetByAccountNumberAsync(string accountNumber);
+    Task<Account?> GetByIdAsync(string id);
     Task<IEnumerable<Account>> GetAllAsync();
 } 

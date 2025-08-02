@@ -13,9 +13,9 @@ public class ATMDbContext(DbContextOptions<ATMDbContext> options) : DbContext(op
         modelBuilder.Entity<Account>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.AccountNumber).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.Id).IsRequired().HasMaxLength(50);
             entity.Property(e => e.Balance).HasPrecision(18, 2);
-            entity.HasIndex(e => e.AccountNumber).IsUnique();
+            entity.HasIndex(e => e.Id).IsUnique();
         });
 
         modelBuilder.Entity<Transaction>(entity =>
@@ -23,6 +23,8 @@ public class ATMDbContext(DbContextOptions<ATMDbContext> options) : DbContext(op
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Amount).HasPrecision(18, 2);
             entity.Property(e => e.TransactionType).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.AccountId).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.TransferAccountId).HasMaxLength(50);
             entity.HasOne(e => e.Account)
                   .WithMany(e => e.Transactions)
                   .HasForeignKey(e => e.AccountId)

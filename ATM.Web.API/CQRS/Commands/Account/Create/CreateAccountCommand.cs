@@ -1,6 +1,6 @@
 namespace ATM.Web.API.CQRS.Commands.Account.Create;
 
-public record CreateAccountCommand : ICommand<CreateAccountCommandResult>
+public class CreateAccountCommand : ICommand<CreateAccountCommandResult>
 {
-    public decimal? InitialBalance { get; init; }
+    public decimal? InitialBalance { get; set; }
 } 

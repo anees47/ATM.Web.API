@@ -6,5 +6,5 @@ public interface IAccountWriteRepository
 {
     Task<Account> CreateAsync(Account account);
     Task<bool> UpdateAsync(Account account);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(string id);
 } 

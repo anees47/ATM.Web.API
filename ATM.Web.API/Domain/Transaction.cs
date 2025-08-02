@@ -1,12 +1,12 @@
 namespace ATM.Web.API.Domain;
 
-public record Transaction
+public class Transaction
 {
-    public Guid Id { get; init; } = Guid.NewGuid();
-    public Guid AccountId { get; init; }
-    public Account? Account { get; init; }
-    public decimal Amount { get; init; } = 0;
-    public DateTime Timestamp { get; init; } = DateTime.UtcNow;
-    public string TransactionType { get; init; } = "";
-    public Guid? TransferAccountId { get; init; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string AccountId { get; set; } = "";
+    public Account? Account { get; set; }
+    public decimal Amount { get; set; } = 0;
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public string TransactionType { get; set; } = "";
+    public string? TransferAccountId { get; set; }
 } 

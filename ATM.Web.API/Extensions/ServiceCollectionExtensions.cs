@@ -7,6 +7,10 @@ using FluentValidation.AspNetCore;
 using ATM.Web.API.CQRS.Queries.Account.GetAll;
 using ATM.Web.API.CQRS.Queries.Account.Get;
 using ATM.Web.API.CQRS.Commands.Account.Create;
+using ATM.Web.API.CQRS.Commands.Account.Deposit;
+using ATM.Web.API.CQRS.Commands.Account.Withdraw;
+using ATM.Web.API.CQRS.Commands.Account.Transfer;
+using ATM.Web.API.CQRS.Queries.Transaction.GetByAccount;
 
 namespace ATM.Web.API.Extensions;
 
@@ -20,23 +24,31 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection RegisterATMServices(this IServiceCollection services)
+    public static IServiceCollection RegisterATMServices(this IServiceCollection servicesCollection)
     {
-        services.AddScoped<IAccountReadRepository, AccountReadRepository>();
-        services.AddScoped<IAccountWriteRepository, AccountWriteRepository>();
+        servicesCollection.AddScoped<IAccountReadRepository, AccountReadRepository>();
+        servicesCollection.AddScoped<IAccountWriteRepository, AccountWriteRepository>();
+        servicesCollection.AddScoped<ITransactionRepository, TransactionRepository>();
 
-        services.AddScoped<CreateAccountCommandHandler>();
-        services.AddScoped<DeleteAccountCommandHandler>();
+        servicesCollection.AddScoped<CreateAccountCommandHandler>();
+        servicesCollection.AddScoped<DeleteAccountCommandHandler>();
+        servicesCollection.AddScoped<DepositCommandHandler>();
+        servicesCollection.AddScoped<WithdrawCommandHandler>();
+        servicesCollection.AddScoped<TransferCommandHandler>();
 
-        services.AddScoped<GetAccountByIdQueryHandler>();
-        services.AddScoped<GetAllAccountsQueryHandler>();
+        servicesCollection.AddScoped<GetAccountByIdQueryHandler>();
+        servicesCollection.AddScoped<GetAllAccountsQueryHandler>();
+        servicesCollection.AddScoped<GetTransactionsByAccountQueryHandler>();
 
-        services.AddScoped<IValidator<CreateAccountCommand>, CreateAccountCommandValidation>();
-        services.AddScoped<IValidator<DeleteAccountCommand>, DeleteAccountCommandValidation>();
+        servicesCollection.AddScoped<IValidator<CreateAccountCommand>, CreateAccountCommandValidation>();
+        servicesCollection.AddScoped<IValidator<DeleteAccountCommand>, DeleteAccountCommandValidation>();
+        servicesCollection.AddScoped<IValidator<DepositCommand>, DepositCommandValidation>();
+        servicesCollection.AddScoped<IValidator<WithdrawCommand>, WithdrawCommandValidation>();
+        servicesCollection.AddScoped<IValidator<TransferCommand>, TransferCommandValidation>();
 
         
-        services.AddFluentValidationAutoValidation();
+        servicesCollection.AddFluentValidationAutoValidation();
         
-        return services;
+        return servicesCollection;
     }
 } 

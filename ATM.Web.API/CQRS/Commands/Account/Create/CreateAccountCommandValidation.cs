@@ -8,6 +8,6 @@ public class CreateAccountCommandValidation : AbstractValidator<CreateAccountCom
     {
         RuleFor(x => x.InitialBalance)
             .GreaterThanOrEqualTo(0).When(x => x.InitialBalance.HasValue)
-            .WithMessage("Initial balance cannot be negative");
+            .WithMessage("Initial balance cannot be less than 0");
     }
 } 
