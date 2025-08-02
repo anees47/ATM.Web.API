@@ -16,7 +16,7 @@ public class CreateAccountCommandHandler(
             return CreateAccountCommandResult.Failure(string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
         }
 
-        var accountNumber = $"ACC{Random.Shared.Next(100000, 999999)}";
+        var accountNumber = $"555{Random.Shared.Next(100000, 999999)}";
 
         var account = new Domain.Account
         {
