@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using ATM.Web.API.Commands.Account;
 using ATM.Web.API.CQRS.Queries.Account.GetAll;
 using ATM.Web.API.CQRS.Queries.Account.Get;
 using ATM.Web.API.CQRS.Commands.Account.Create;
+using ATM.Web.API.CQRS.Commands.Account.Delete;
 using ATM.Web.API.CQRS.Commands.Account.Deposit;
 using ATM.Web.API.CQRS.Commands.Account.Withdraw;
 using ATM.Web.API.CQRS.Commands.Account.Transfer;

@@ -1,6 +1,4 @@
-using ATM.Web.API.CQRS.Commands;
-
-namespace ATM.Web.API.Commands.Account;
+namespace ATM.Web.API.CQRS.Commands.Account.Delete;
 
 public class DeleteAccountCommand : ICommand<DeleteAccountCommandResult>
 {

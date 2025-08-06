@@ -1,6 +1,6 @@
 using ATM.Web.API.Domain;
 
-namespace ATM.Web.API.Repositories;
+namespace ATM.Web.API.Repositories.Interfaces;
 
 public interface IAccountReadRepository
 {

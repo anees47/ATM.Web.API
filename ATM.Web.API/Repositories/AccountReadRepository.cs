@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ATM.Web.API.Data;
 using ATM.Web.API.Domain;
+using ATM.Web.API.Repositories.Interfaces;
 
 namespace ATM.Web.API.Repositories;
 

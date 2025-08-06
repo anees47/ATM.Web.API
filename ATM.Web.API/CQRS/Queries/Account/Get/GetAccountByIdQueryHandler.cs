@@ -1,4 +1,5 @@
 using ATM.Web.API.Repositories;
+using ATM.Web.API.Repositories.Interfaces;
 
 namespace ATM.Web.API.CQRS.Queries.Account.Get;
 

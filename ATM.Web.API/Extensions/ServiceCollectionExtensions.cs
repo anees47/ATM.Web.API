@@ -1,16 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using ATM.Web.API.Data;
 using ATM.Web.API.Repositories;
-using ATM.Web.API.Commands.Account;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using ATM.Web.API.CQRS.Queries.Account.GetAll;
 using ATM.Web.API.CQRS.Queries.Account.Get;
 using ATM.Web.API.CQRS.Commands.Account.Create;
+using ATM.Web.API.CQRS.Commands.Account.Delete;
 using ATM.Web.API.CQRS.Commands.Account.Deposit;
 using ATM.Web.API.CQRS.Commands.Account.Withdraw;
 using ATM.Web.API.CQRS.Commands.Account.Transfer;
 using ATM.Web.API.CQRS.Queries.Transaction.GetByAccount;
+using ATM.Web.API.Repositories.Interfaces;
 
 namespace ATM.Web.API.Extensions;
 

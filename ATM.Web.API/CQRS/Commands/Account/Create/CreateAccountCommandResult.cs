@@ -2,9 +2,9 @@ namespace ATM.Web.API.CQRS.Commands.Account.Create;
 
 public record CreateAccountCommandResult : ICommandResult
 {
-    public bool IsSuccess { get; init; }
-    public string? ErrorMessage { get; init; }
-    public Domain.Account? Account { get; init; }
+    public bool IsSuccess { get; set; }
+    public string? ErrorMessage { get; set; }
+    public Domain.Account? Account { get; set; }
 
     public static CreateAccountCommandResult Success(Domain.Account account) => new()
     {

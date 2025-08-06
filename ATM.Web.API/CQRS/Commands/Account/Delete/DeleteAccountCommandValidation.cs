@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace ATM.Web.API.Commands.Account;
+namespace ATM.Web.API.CQRS.Commands.Account.Delete;
 
 public class DeleteAccountCommandValidation : AbstractValidator<DeleteAccountCommand>
 {

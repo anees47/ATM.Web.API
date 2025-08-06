@@ -1,5 +1,5 @@
 using ATM.Web.API.Repositories;
-using ATM.Web.API.Domain;
+using ATM.Web.API.Repositories.Interfaces;
 using FluentValidation;
 
 namespace ATM.Web.API.CQRS.Commands.Account.Create;
@@ -21,6 +21,8 @@ public class CreateAccountCommandHandler(
         var account = new Domain.Account
         {
             Id = accountNumber,
+            Name = command.Name,
+            CreatedAt = DateTime.UtcNow,
             Balance = command.InitialBalance ?? 0
         };
 

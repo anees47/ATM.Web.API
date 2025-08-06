@@ -13,9 +13,23 @@ public class ATMDbContext(DbContextOptions<ATMDbContext> options) : DbContext(op
         modelBuilder.Entity<Account>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Id).IsRequired().HasMaxLength(50);
-            entity.Property(e => e.Balance).HasPrecision(18, 2);
-            entity.HasIndex(e => e.Id).IsUnique();
+
+            entity.Property(e => e.Id)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.Property(e => e.Balance)
+                .HasPrecision(18, 2);
+
+            entity.Property(e => e.CreatedAt)
+                .IsRequired();
+
+            entity.HasIndex(e => e.Id)
+                .IsUnique();
         });
 
         modelBuilder.Entity<Transaction>(entity =>
@@ -26,9 +40,9 @@ public class ATMDbContext(DbContextOptions<ATMDbContext> options) : DbContext(op
             entity.Property(e => e.AccountId).IsRequired().HasMaxLength(50);
             entity.Property(e => e.TransferAccountId).HasMaxLength(50);
             entity.HasOne(e => e.Account)
-                  .WithMany(e => e.Transactions)
-                  .HasForeignKey(e => e.AccountId)
-                  .OnDelete(DeleteBehavior.Cascade);
+                .WithMany(e => e.Transactions)
+                .HasForeignKey(e => e.AccountId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
     }
-} 
+}

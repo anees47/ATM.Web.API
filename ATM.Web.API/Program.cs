@@ -19,6 +19,19 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddATMDatabase(builder.Configuration);
 builder.Services.RegisterATMServices();
 
+var allowedOrigin = "http://localhost:4200";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins(allowedOrigin)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAngularApp");
 
 app.UseAuthorization();
 

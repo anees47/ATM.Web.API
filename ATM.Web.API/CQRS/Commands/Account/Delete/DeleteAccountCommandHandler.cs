@@ -1,7 +1,7 @@
-using ATM.Web.API.Repositories;
+using ATM.Web.API.Repositories.Interfaces;
 using FluentValidation;
 
-namespace ATM.Web.API.Commands.Account;
+namespace ATM.Web.API.CQRS.Commands.Account.Delete;
 
 public class DeleteAccountCommandHandler(
     IAccountReadRepository readRepository,

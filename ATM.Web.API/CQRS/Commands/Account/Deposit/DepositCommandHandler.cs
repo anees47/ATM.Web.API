@@ -1,5 +1,6 @@
 using ATM.Web.API.Repositories;
 using ATM.Web.API.Domain;
+using ATM.Web.API.Repositories.Interfaces;
 using FluentValidation;
 
 namespace ATM.Web.API.CQRS.Commands.Account.Deposit;
